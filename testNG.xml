@@ -1,0 +1,31 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="COGNIZANT">
+    <test name="COGNIZANT">
+        <!-- Login's parameters-->
+        <parameter name="browser" value="Chrome"/>
+        <parameter name="url" value="https://www.newegg.com/global/cr/"/>
+        <parameter name="emailToLogin" value="ctschallenge18@gmail.com"/>
+        <parameter name="passwordToLogin" value="Challenge18"/>
+
+        <!-- Search parameters-->
+        <parameter name="itemToSearch" value="N82E16820173374"/>
+        <parameter name="itemToSearch2" value="9SIA0ZX66G6316"/>
+        <parameter name="itemToSearch3" value="N82E16896113285"/>
+        <parameter name="itemsQuantity" value="4"/>
+
+        <groups>
+            <run>
+               <!-- <include name="Challenge_Login"/>-->
+                <include name="Challenge_Search"/>
+
+             </run>
+         </groups>
+
+         <classes>
+             <!--<class name="tests.LoginTest"/>-->
+             <class name="tests.SearchTest"/>
+
+        </classes>
+
+    </test>
+</suite>
