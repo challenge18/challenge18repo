@@ -7,39 +7,43 @@ import pageObjects.LoginPage;
 import pageObjects.SearchPage;
 import selenium.SeleniumInitializer;
 
+import java.util.ArrayList;
+
 /**
  * Created by Gerardo
  */
 public class SearchTest extends SeleniumInitializer {
 
-    @Parameters({"itemToSearch", "itemToSearch2", "itemToSearch3", "itemsQuantity", "emailToLogin", "passwordToLogin"})
-    @Test(groups = "Challenge_Search")
+   @Parameters({"itemToSearch", "itemsQuantity", "emailToLogin", "passwordToLogin"})
+   @Test(groups = "Challenge_Search")
 
-    public void searchSuccessfullyTest(String itemToSearch, String itemToSearch2, String itemToSearch3, String itemsQuantity, String emailToLogin, String passwordToLogin) throws InterruptedException {
+   public void searchSuccessfullyTest(String itemToSearch, String itemsQuantity, String emailToLogin, String passwordToLogin) throws InterruptedException {
+
         SearchPage searchPage = new SearchPage(driver);
         LoginPage loginPage = new LoginPage(driver);
 
         //search
         Assert.assertTrue(searchPage.isMyAccountLinkDisplayed(), "My Account link is not displayed");
         Thread.sleep(5000);
-        searchPage.SearchItem(itemToSearch);
-        Thread.sleep(1500);
-        searchPage.clickOnSearchButton();
-        Thread.sleep(1500);
-        searchPage.clickOnAddToCartButton();
-        Thread.sleep(1500);
-        searchPage.SearchItem2(itemToSearch2);
-        Thread.sleep(1500);
-        searchPage.clickOnSearchButton();
-        Thread.sleep(1500);
-        searchPage.clickOnAddToCartButton();
-        Thread.sleep(1500);
-        searchPage.SearchItem3(itemToSearch3);
-        Thread.sleep(1500);
-        searchPage.clickOnSearchButton();
-        Thread.sleep(1500);
-        searchPage.clickOnAddToCartButton();
-        Thread.sleep(1500);
+
+        String items[] = itemToSearch.split(",");
+        ArrayList<String> ListItemsToSearch = new ArrayList<String>();
+
+        for(int i=0; i<items.length; i++){
+
+            ListItemsToSearch.add(items[i]);
+        }
+
+        for(int i =0; i<ListItemsToSearch.size(); i++){
+
+            searchPage.SearchItem(ListItemsToSearch.get(i));
+            Thread.sleep(1500);
+            searchPage.clickOnSearchButton();
+            Thread.sleep(1500);
+            searchPage.clickOnAddToCartButton();
+            Thread.sleep(1500);
+        }
+
         searchPage.scrollDown();
         Thread.sleep(1500);
         searchPage.clickOnRemoveItemCheck();
@@ -67,9 +71,10 @@ public class SearchTest extends SeleniumInitializer {
         loginPage.insertEmail(emailToLogin);
         Thread.sleep(1500);
         loginPage.insertPassword(passwordToLogin);
-        Thread.sleep(120000);
+        Thread.sleep(110000);
         Assert.assertTrue(loginPage.isSignInButtonEnabled(),"Login button is not enabled");
         loginPage.clickOnSignInButton();
+        Thread.sleep(1500);
 
         //checkout
         Assert.assertTrue(searchPage.isShippingAddressDisplayed(), "Shipping Address Title not displayed");
@@ -105,7 +110,7 @@ public class SearchTest extends SeleniumInitializer {
         Assert.assertTrue(searchPage.isAssistancePageDisplayed(), "Assistance Title not displayed");
         Thread.sleep(1500);
         searchPage.emailForgot(emailToLogin);
-        Thread.sleep(120000);
+        Thread.sleep(110000);
         Assert.assertTrue(searchPage.isSubmitButtonEnabled(),"Submit button is not enabled");
         Thread.sleep(1500);
         searchPage.clickOnSubmitButton();

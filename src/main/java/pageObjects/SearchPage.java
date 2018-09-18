@@ -21,7 +21,7 @@ public class SearchPage extends PageObjects {
     private final By SHIPPING_TITLE = By.xpath("//li[@class='current']//span[contains(text(),'Shipping')]");
     private final By BILLING_BUTTON = By.xpath("//div[@class='call-to-action call-to-action-checkout']//a[@title='Icon button']");
     private final By LOGO = By.xpath("//img[@src='//c1.neweggimages.com/WebResource/Themes/2005/Nest/logo_424x210.png']");
-    private final By ACCOUNT_LINK = By.xpath("//ins[contains(text(),'My Account')]");
+    private final By ACCOUNT_LINK = By.xpath("//ins[contains(text(),'Gerardo R')]");
     private final By LOGOUT_BUTTON = By.xpath("//a[contains(text(),'Logout')]");
     private final By THANKYOU_TITLE = By.xpath("//h1[contains(text(),'Thank You')]");
     private final By FORGOT_PASSWORD = By.xpath("//span[contains(text(),'Forgot your password?')]");
@@ -37,13 +37,6 @@ public class SearchPage extends PageObjects {
         webDriverCommands.sendKeys(SEARCH_FIELD, item);
     }
 
-    public void SearchItem2(String item2){
-        webDriverCommands.sendKeys(SEARCH_FIELD, item2);
-    }
-
-    public void SearchItem3(String item3){
-        webDriverCommands.sendKeys(SEARCH_FIELD, item3);
-    }
     public void clickOnSearchButton(){
         webDriverCommands.click(SEARCH_BUTTON);
     }

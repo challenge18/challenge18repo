@@ -4,13 +4,11 @@
         <!-- Login's parameters-->
         <parameter name="browser" value="Chrome"/>
         <parameter name="url" value="https://www.newegg.com/global/cr/"/>
-        <parameter name="emailToLogin" value="ctschallenge18@gmail.com"/>
-        <parameter name="passwordToLogin" value="Challenge18"/>
+        <parameter name="emailToLogin" value="ctschallenge18gerardo@gmail.com"/>
+        <parameter name="passwordToLogin" value="Challenge$018"/>
 
         <!-- Search parameters-->
-        <parameter name="itemToSearch" value="N82E16820173374"/>
-        <parameter name="itemToSearch2" value="9SIA0ZX66G6316"/>
-        <parameter name="itemToSearch3" value="N82E16896113285"/>
+        <parameter name="itemToSearch" value="N82E16820173374, 9SIA0ZX66G6316, N82E16896113285"/>
         <parameter name="itemsQuantity" value="4"/>
 
         <groups>
